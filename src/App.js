@@ -1,8 +1,9 @@
+const RecommendController = require('./RecommendController.js');
 
 class App {  
 
   play() {
-    
+    new RecommendController().play();
   }
 }
 
