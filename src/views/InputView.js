@@ -8,8 +8,9 @@ const InputView = {
   },
 
 
-  readHateMenus() {
-
+  readHateMenus(coachName, callback) {
+    Console.readLine(`${coachName}(이)가 못 먹는 메뉴를 입력해 주세요.\n`,
+    hateMenus => callback(hateMenus));
   },
 }
 
