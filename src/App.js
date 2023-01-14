@@ -2,6 +2,7 @@ const InputView = require('./views/InputView');
 const OutputView = require('./views/OutputView');
 const CoachNameValidator = require('./validators/CoachNameValidator');
 const { Console } = require('@woowacourse/mission-utils');
+const CoachHateMenusValidator = require('./validators/CoachHateMenusValidator');
 
 class App {
 
@@ -27,15 +28,23 @@ class App {
       return;
     }
 
-    InputView.readHateMenus(coachNameList.shift(),
-      hateMenus => {
-        console.log(hateMenus)
-        this.inputHateMenus([...coachNameList])
+    const currentCoachName = coachNameList[0];
+
+    InputView.readHateMenus(currentCoachName, hateMenus => {
+  
+        //this.inputHateMenus([...coachNameList])
+      if(this.isValidInputValue(CoachHateMenusValidator, hateMenus)) {
+        console.log(hateMenus);
+        this.inputHateMenus(coachNameList.slice(1));
+        return;
+      }
+
+      this.inputHateMenus(coachNameList);
     })
   }
 
   recommendMenus() {
-    console.log('메뉴 추천');
+    OutputView.printRecommendResult('메뉴 추천 결과입니다.');
   }
 
 

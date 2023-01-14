@@ -8,7 +8,11 @@ const OutputView = {
 
   printErrorMessage(errorMessage) {
     Console.print(errorMessage);
-  }
+  },
+
+  printRecommendResult(message) {
+    Console.print(message);
+  },
 
 }
 
